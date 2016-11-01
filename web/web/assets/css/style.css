@@ -1,0 +1,17 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background:radial-gradient(50% 50%,#2a61a1,#1e4879);
+  background:-webkit-radial-gradient(50% 50%,#2a61a1,#1e4879);
+  background:-ms-radial-gradient(50% 50%,#2a61a1,#1e4879);
+  background:#1E4F86\0;
+}
+
+#left-panel nav ul:last-child li:last-child {
+  position: absolute;
+  width: 100%;
+  bottom: 74px;
+}

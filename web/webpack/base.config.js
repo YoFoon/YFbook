@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var path = require('path');
 var webpack = require('webpack');
 
@@ -6,16 +5,14 @@ var rootDir = path.resolve(__dirname, '../');
 
 module.exports = {
   entry: {
-    bundle: './app/src/main.jsx',
+    bundle: './src/main.jsx',
     vendor: [
       'react',
       'react-dom',
       'react-router',
       'lodash',
       'reflux',
-      'antd',
-      'classnames',
-      'jquery'
+      'antd'
     ]
   },
   context: rootDir,
@@ -58,27 +55,21 @@ module.exports = {
       test: /\.(png|jpg|jpeg|gif)(\?(v=)?[\w\.\-]+)?$/i,
       loader: 'url?limit=10000'
     }, {
-      test: require.resolve('jquery'),
-      loader: 'expose?jQuery'
-    }, {
-      test: require.resolve('jquery'),
-      loader: 'expose?$'
-    }, {
       test: require.resolve('lodash'),
       loader: 'expose?_'
     }]
   },
   resolve: {
     alias: {
-      pages: path.resolve(rootDir, './app/src/pages'),
-      common: path.resolve(rootDir, './app/src/common'),
-      config: path.resolve(rootDir, './app/src/config'),
-      styles: path.resolve(rootDir, './app/src/styles'),
-      components: path.resolve(rootDir, './app/src/components'),
+      pages: path.resolve(rootDir, './src/pages'),
+      common: path.resolve(rootDir, './src/common'),
+      config: path.resolve(rootDir, './src/config'),
+      styles: path.resolve(rootDir, './src/styles'),
+      components: path.resolve(rootDir, './src/components'),
       public: path.resolve(rootDir, './public')
     }
   },
-  noParse: ["jquery"],
+  //noParse: ["jquery"],
   plugins: [
     new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js", Infinity)
   ]

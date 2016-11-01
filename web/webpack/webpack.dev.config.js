@@ -1,23 +1,27 @@
 var _ = require('lodash');
 var baseConfig = require('./base.config')
 var path = require('path');
+var webpack = require('webpack');
 
 var config = _.merge(baseConfig, {
   output: {
-    path: path.resolve(__dirname, '../app/web/build'),
+    path: path.resolve(__dirname, '../web/build'),
     publicPath: 'build/',
     filename: '[name].js',
     chunkFilename: 'chunk.[id].js',
     pathinfo: true
   },
   devServer: {
-    contentBase: './app/web',
+    contentBase: './web',
     devtool: 'eval',
-    port: 8008,
+    port: 3000,
     hot: true,
     inline: true
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ].concat(baseConfig.plugins)
 });
 
 module.exports = config;
