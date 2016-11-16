@@ -4,9 +4,7 @@ var koa = require('koa'),
 	logger = require('koa-logger')
   json = require('koa-json');
 
-
 var route = require('./router/index');
-
 
 var app = koa();
 

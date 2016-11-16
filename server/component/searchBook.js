@@ -9,11 +9,20 @@ module.exports = function *(next) {
 	var name = this.params.name;
 
 	var _this = this;
-	request
-			.get( fetchUrl.biquge )
-			.end( function( err, res ) {
-				//_this.body = res.text;
-			})
 
-	this.body = "abc";
+	var url = fetchUrl.biqugeSearch + "s=287293036948159515" + "&q=" + encodeURIComponent(name);
+
+	console.log(url);
+	var deferred = Q.defer();
+	request.
+		get( url )
+		.end( function( err, res ) {
+			if(err) {
+				deferred.reject(err);
+			} else {
+				deferred.resolve(res.text);
+			}
+		})
+	this.body = yield deferred.promise;
+
 }
