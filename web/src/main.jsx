@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRedirect, useRouterHistory, Redirect } from 'react-router'
 import { createHashHistory } from 'history'
 
-import 'antd/dist/antd.min.css';
 import 'styles/index.less';
+
+import 'config/globe';
 
 const validate = function (next, replace, callback) {
     const isLoggedIn = !!window.USER_INFO
@@ -25,6 +26,8 @@ const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 
 import BookMain from 'pages/book/index.jsx';
 import BookList from 'pages/book/list/index.jsx';
+import Search from 'pages/book/search/index.jsx';
+import SearchList from 'pages/book/search/list.jsx';
 
 
 ReactDOM.render((
@@ -34,7 +37,9 @@ ReactDOM.render((
             <Redirect from="/" to="/book/all"/>
             <Redirect from="/book" to="/book/all"/>
             <Route path="book" component={BookMain}>
-                <Route path=":filterUrl" component={BookList} />
+                <Route path="all" component={BookList} />
+                <Route path="search" component={Search} />
+                <Route path="search/:name" coomponent={SearchList} />
             </Route>
             <Route path="*" component={NotFound} />
         </Route>

@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 
 export default class ListIndex extends Component{
 
+	constructor(props) {
+		super(props);
+	}
+
   render() {
 
     return (
-      <p>书架</p>
+      <p>Hello World</p>
     )
       
   }

@@ -6,16 +6,16 @@ var Q = require('q');
 var request = require('superagent');
 
 module.exports = function *(next) {
-	var name = this.params.name;
+	
+	var url = this.request.body.url;
 
-	var url = fetchUrl.biqugeSearch + "s=287293036948159515" + "&q=" + encodeURIComponent(name);
+	var deferred = Q.defer();
 
 	var data = {
-		status :1,
+		status: 1,
 		data: []
 	}
 
-	var deferred = Q.defer();
 	request
 		.get( url )
 		.end( function( err, res ) {
@@ -26,22 +26,22 @@ module.exports = function *(next) {
 			} else {
 				var $ = cheerio.load(res.text);
 
-				var lists = $(".result-item");
-				for( var i = 0, listLen = lists.length; i < listLen; i++ ) {
-					var list = lists.eq(i);
-					var title = list.find('.result-game-item-title-link em').html();
-					var url = list.find('.result-game-item-title-link').attr('href');
-					var intro = list.find('.result-game-item-desc').html();
+				var list = $("#list");
+				var chapters = list.find('dt').eq(1).nextAll();
 
+				for( var i = 0, cpLen = chapters.length; i< cpLen; i++ ) {
+					var chapter = chapters.eq(i);
+					var A = chapter.find('a');
+					var name = A.text();
+					var url = A.attr('href');
 					data.data.push({
-						title: title,
-						url: url,
-						intro: intro
-					});
+						name:name,
+						url: url
+					})
 				}
-
 				deferred.resolve(data);
 			}
 		})
+
 	this.body = yield deferred.promise;
 }

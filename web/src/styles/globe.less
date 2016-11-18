@@ -1,0 +1,69 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,select,input{margin:0;padding:0;}
+body{font-size:12px;}
+img{border:none;vertical-align:top;}
+table{border-collapse:collapse;}
+ul,ol{list-style:none;}
+textarea{resize:none;overflow:auto;}
+a{text-decoration: none;}
+html{font-size: 100px;}
+
+.fl{float: left;}
+.fr{float: right;}
+
+.clearfix{
+	zoom: 1;
+	&:after{
+		display: block;
+		overflow: hidden;
+		clear: both;
+		content: "";
+	}
+}
+.abso{
+	position: absolute;
+}
+.rela{
+	position: relative;
+}
+.block{
+	display: block !important;
+}
+.inline{
+	display: inline !important;
+}
+.hide{
+	display: none !important;
+}
+.absoLayout{
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	overflow: auto;
+}
+.row{
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  display: block;
+}
+.col-4,.col-20{
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  float: left;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: block;
+}
+.col-4{
+	width: percentage((4 / 24))
+}
+.col-20{
+	width: percentage((20 / 24))
+}

@@ -18,7 +18,7 @@ module.exports = {
   context: rootDir,
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js$/,
       loaders: ['babel'],
       exclude: /node_modules/
     }, {
