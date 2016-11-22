@@ -3,7 +3,7 @@ import {Link } from 'react-router'
 import ListAction from 'pages/book/actions/listAction';
 import ListStore from 'pages/book/stores/listStore';
 
-export default class BookIndex extends Component{
+export default class ReadIndex extends Component{
 
 	constructor(props) {
 		super(props);
@@ -12,13 +12,9 @@ export default class BookIndex extends Component{
   render() {
     return (
     	<div>
-    		<div className="content">
+    		<div className="read">
     			{this.props.children}
     		</div>
-	      <ul className="bottom">
-    			<li><Link to="book/all">书架</Link></li>
-    			<li><Link to="book/search">找书</Link></li>
-    		</ul>
 	    </div>
     )
       

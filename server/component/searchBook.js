@@ -6,7 +6,7 @@ var Q = require('q');
 var request = require('superagent');
 
 module.exports = function *(next) {
-	var name = this.params.name;
+	var name = this.request.body.name;
 
 	var url = fetchUrl.biqugeSearch + "s=287293036948159515" + "&q=" + encodeURIComponent(name);
 
@@ -29,14 +29,18 @@ module.exports = function *(next) {
 				var lists = $(".result-item");
 				for( var i = 0, listLen = lists.length; i < listLen; i++ ) {
 					var list = lists.eq(i);
-					var title = list.find('.result-game-item-title-link em').html();
+					var title = list.find('.result-game-item-title-link').text();
 					var url = list.find('.result-game-item-title-link').attr('href');
-					var intro = list.find('.result-game-item-desc').html();
+					var intro = list.find('.result-game-item-desc').text();
+
+					var tags = list.find(".result-game-item-info-tag");
 
 					data.data.push({
 						title: title,
 						url: url,
-						intro: intro
+						intro: intro,
+						author: tags.eq(0).text(),
+						type: tags.eq(1).text()
 					});
 				}
 

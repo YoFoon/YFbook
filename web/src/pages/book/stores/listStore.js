@@ -6,6 +6,17 @@ import request from 'superagent';
 
 export default Reflux.createStore({
   listenables:[ListAction],
+
+  onGetBook(name) {
+    request
+      .post( API.searchBook )
+      .send({name: name})
+      .end(function(err, res) {
+        res = res.text;
+        res= JSON.parse(res);
+        ListAction.getBook.completed(res.data);
+      })
+  },
   
   onGetChapter(url){
     request

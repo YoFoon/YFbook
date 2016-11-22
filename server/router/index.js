@@ -7,7 +7,7 @@ module.exports = function(router) {
 
 	router.get("/", test);
 
-	router.get("/search/:name", SearchBook);
+	router.post("/searchBook", SearchBook);
 
 	router.post("/searchChapter", SearchChapter);
 

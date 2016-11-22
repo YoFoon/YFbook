@@ -1,11 +1,9 @@
 var pref = "http://localhost:8000";
 
 export default {
-	searchBook(name) {
-		return pref + '/search/' + name;
-	},
+	searchBook: pref + '/searchBook',
 
 	searchChapter: pref + '/searchChapter',
 
-	searchText: pref + '/searchText',
+	searchText: pref + '/searchText'
 }

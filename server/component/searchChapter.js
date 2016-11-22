@@ -17,7 +17,7 @@ module.exports = function *(next) {
 	}
 
 	request
-		.get( url )
+		.get( fetchUrl.biquge + url )
 		.end( function( err, res ) {
 			if(err) {
 				data.status = 0;

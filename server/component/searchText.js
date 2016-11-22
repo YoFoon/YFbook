@@ -8,15 +8,13 @@ var request = require('superagent');
 module.exports = function *(next) {
 	
 	var url = this.request.body.url;
-	console.log(url)
 
 	var deferred = Q.defer();
 
 	var data = {
 		status: 1,
 		data: {}
-	}
-
+	}	
 	request
 		.get( fetchUrl.biquge + url )
 		.end( function( err, res ) {
