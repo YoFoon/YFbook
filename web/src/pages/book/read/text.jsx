@@ -45,6 +45,7 @@ export default class ReadText extends Component{
 	}
 
 	handleClick(url,type) {
+		if(url.indexOf('.html') == -1){return false}
 		if(type == 'next'){
 			this.setState({
 				text: this.state.nextText,
