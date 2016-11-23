@@ -18,8 +18,8 @@ var config = _.merge(baseConfig, {
   plugins: [
     new Clean('../dist/build'),
     new CopyWebpackPlugin([
-      {from: './app/web/assets', to: '../assets'},
-      {from: './app/web/index.html', to: '../index.html'}
+      {from: './web/assets', to: '../assets'},
+      {from: './web/index.html', to: '../index.html'}
     ]),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
